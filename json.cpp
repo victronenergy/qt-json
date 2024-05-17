@@ -232,6 +232,8 @@ namespace QtJson {
         } else if (data.canConvert<QString>()) { // can value be converted to string?
             // this will catch QUrl, ... (all other types which can be converted to string)
             str = sanitizeString(data.toString()).toUtf8();
+        } else if (data.canConvert<uchar>()) {
+            str = str = QString::number(data.value<uchar>()).toUtf8();
         } else {
             success = false;
         }
